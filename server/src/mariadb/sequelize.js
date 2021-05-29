@@ -10,7 +10,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   host: process.env.DB_URL,
   dialect: 'mariadb',
   dialectOptions: {
-    timezone: 'Etc/GMT+0',
+    timezone: 'Etc/GMT-3',
     connectTimeout: 600000,
     options: {
        requestTimeout: 600000

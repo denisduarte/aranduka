@@ -47,6 +47,6 @@ var corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api", routes);
-app.listen(process.env.APP_PORT, () => {
-  console.log("The backend app is listening at port", process.env.APP_PORT)
+app.listen(process.env.PORT, () => {
+  console.log("The backend app is listening at port", process.env.PORT)
 });
