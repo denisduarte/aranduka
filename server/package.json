@@ -33,7 +33,7 @@
     "sequelize": "^6.3.5",
     "stream-json": "^1.7.1",
     "validator": "^13.1.17",
-    "cors": "^7.6.0"
+    "cors": "^1.0.1"
   },
   "engines": {
     "node": "15.x"

@@ -1,2 +1,2 @@
 /server/.env
-*.csv
+/server/node_modules
