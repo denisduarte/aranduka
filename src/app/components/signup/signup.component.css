@@ -1,0 +1,44 @@
+* {
+  color: white;
+}
+
+.alert-danger p {
+  color: #121212!important;
+}
+
+.alert-danger {
+  background-color: #BC3F3F;
+  border-color: #BC3F3F;
+}
+
+.userForm {
+  margin: 2em 4em;
+  padding: 2em 4em;
+  background-color: #232323;
+  border-radius: 1em;
+}
+
+button {
+  margin-top: 1em;
+}
+
+.form-row {
+  margin: 0;
+}
+
+.checkbox {
+  width: 1em;
+  height: 1em;
+  margin-left: 3em;
+}
+
+.alert-light {
+  margin-top: 5em;
+  color: #BC3F3F;
+  background-color: #ffffffdd;
+}
+
+.text-muted {
+  color: #CF6679!important;
+  font-size: 0.8em;
+}

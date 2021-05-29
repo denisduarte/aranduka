@@ -1,0 +1,65 @@
+
+  <div *ngFor="let book of lendings">
+    <div class="row">
+      <div class="col-lg-2">
+        <img src="{{book.coverURL}}" alt="">
+      </div>
+      <div class="info col-lg-7">
+          <span class="bookTitle">{{book.title}}</span>
+          <span class="bookSubtitle">{{book.subtitle}}</span>
+          <div>
+            <span class="bookAuthor" *ngFor="let author of book.Authors; let i = index;">
+              {{ i > 0 ? '|' : ''}} {{author.name}}
+            </span>
+
+            <span class="color-primary" *ngIf="book.Organisers.length > 0">Organização:
+              <span class="bookAuthor" *ngFor="let organiser of book.Organisers; let i = index;">
+                {{ i > 0 ? '|' : ''}} {{organiser.name}}
+              </span>
+            </span>
+          </div>
+          <div>
+            <span class="bookPressYear text-primary">
+              <span class="color-primary">Editora:</span>
+              {{book.press}}&nbsp;&nbsp;&nbsp;
+              <span class="color-primary">Ano:</span>
+              {{book.year}}
+            </span>
+          </div>
+
+          <hr/>
+
+          <div>
+            <span class="bookPressYear text-primary">
+              <span class="color-primary">Emprestado para:</span> {{book.lending[0].name}} ({{book.lending[0].email}})
+                &nbsp;&nbsp;&nbsp;
+              <span class="color-primary">em:</span> {{book.lending[0].lendingEntry.createdAt  | date:'longDate'}}
+                ({{daysSince(book.lending[0].lendingEntry.createdAt)}} dias)
+            </span>
+          </div>
+
+          <div *ngIf="book.queue.length > 0">
+            <span class="bookPressYear text-primary">
+              <span class="color-primary">Fila de espera:</span>
+              <div class="watingList" *ngFor="let person of book.queue; let i = index;">
+                {{i + 1}}. {{person.name}} ({{person.email}})
+                  &nbsp;&nbsp;&nbsp;
+                <span class="color-primary">em:</span> {{person.waitingEntry.createdAt  | date:'longDate'}}
+                  ({{daysSince(person.waitingEntry.createdAt)}} dias)
+              </div>
+            </span>
+          </div>
+
+          <div class="list-actions d-flex justify-content-end">
+            <div class="p-2">
+                <a class="color-primary" routerLink="/books/entry"
+                    [queryParams]="{id: book._id}">Ver livro</a>
+            </div>
+            <div class="p-2">
+              <a class="color-primary"
+                (click)="onReturnBook(book._id)">Devolver livro</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

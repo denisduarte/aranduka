@@ -1,0 +1,60 @@
+
+<div class="userForm" *ngIf="user">
+
+    <form class="" [formGroup]="userForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title" class="text-primary">Nome</label>
+        <input type="text" id="title"
+                class="form-control bg-light"
+                (click)="hideAlert()"
+                formControlName="name"/>
+        <span class="text-muted"
+              *ngIf="!userForm.get('name').valid && userForm.get('name').touched">
+              Este campo é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="text-primary">Email</label>
+        <input type="text" id="email"
+                class="form-control bg-light"
+                formControlName="email"
+                (click)="hideAlert()"
+                email/>
+        <span
+          *ngIf="!userForm.get('email').valid && userForm.get('email').touched" class="help-block">
+          <span *ngIf="userForm.get('email').errors['email']">Formato de e-mail inválido</span>
+          <span *ngIf="userForm.get('email').errors['required']">Este campo é obrigatório</span>
+
+        </span>
+      </div>
+
+      <div class="form-row">
+        <label for="email" class="text-primary">Quero receber notícias da Gralha</label>
+
+        <div class="checkboxContainer">
+          <input type="checkbox" id="acceptMailling"
+                  class="form-control checkbox bg-light"
+                  (click)="hideAlert()"
+                  formControlName="acceptMailling"/>
+        </div>
+      </div>
+
+
+      <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary bg-primary"
+                [disabled]="!userForm.valid" >
+                  Atualizar meus dados
+        </button>
+      </div>
+
+    </form>
+
+    <div class="alert alert-light" role="alert" *ngIf="formUpdated">
+      Seus dados foram atualizados.
+    </div>
+
+
+
+</div>

@@ -1,0 +1,36 @@
+
+
+.modal-content {
+  background-color: #121212;
+  color: #FFFFFFCC;
+}
+
+.modal-header {
+    border-bottom: 1px solid #FEAE9399;
+    color: #FEAE9399;
+}
+
+.close {
+  color: #FFFFFFCC;
+}
+
+.mrgbtm {
+  margin-top: 2em;
+}
+
+.btn-danger {
+  background-color: #CF6679;
+  border-color: #CF6679;
+  color: #121212;
+}
+
+.btn-success {
+  background-color: #54985D;
+  border-color: #54985D;
+  color: #121212;
+}
+
+
+.col-md-6 {
+  background-color: red;
+}

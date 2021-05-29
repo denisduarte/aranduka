@@ -1,0 +1,61 @@
+.row {
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333333;
+}
+
+.info {
+  background-color: #232323;
+  padding: 1em;
+  border-radius: 1em;
+  font-size: 0.8em;
+}
+
+.info span {
+  display: block;
+  color: #FFFFFFDD;
+}
+
+.info span.bookPressYear span, .info span.bookAuthor span{
+  display: inline;
+}
+
+
+.info span.bookAuthor {
+  display: inline;
+}
+
+.info hr {
+ margin-top: 1.3em;
+ margin-bottom: 1.3em;
+ width: 90%;
+ border-color: #FEAE9399;
+ border-width: 1px;
+}
+
+.bookTitle {
+  font-size: 1.4em;
+}
+
+
+.addedIn {
+  font-size: 0.7em;
+  margin-bottom: 1em;
+}
+
+
+img {
+  width: 80%
+}
+
+.list-actions {
+  font-size: 0.8em;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  right: 1em;
+}
+
+.addedIn {
+  margin: 2em 2em 0 0;
+}

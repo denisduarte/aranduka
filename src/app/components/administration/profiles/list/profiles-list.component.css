@@ -1,0 +1,21 @@
+table {
+  margin-left: 2em;
+}
+
+td, th {
+  text-align: center;
+  width: 25%;
+  color: #FFFFFFCC;
+}
+
+td.center {
+  text-align: center;
+  padding-left: 4em;
+}
+
+tr {
+  padding-left: 4em;
+}
+
+tr:nth-child(even) {background: #232323}
+tr:nth-child(odd) {background: #2C2C2C}

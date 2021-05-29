@@ -1,0 +1,67 @@
+
+.comment-list {
+  margin-top: 50px;
+}
+
+
+.comment-entry {
+  margin-top: 30px;
+}
+
+
+.comment-list span {
+  display: block;
+}
+
+
+.comment-user {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+}
+
+.comment-text {
+
+}
+
+.comment-date{
+  font-size: 0.8em;
+}
+
+.row {
+  margin: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333333;
+}
+
+.row .row {
+  border-bottom: 0 solid #333333;
+}
+
+.info  {
+  padding: 0;
+  background-color: #232323;
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.info span {
+  xdisplay: block;
+  color: #FFFFFDD;
+}
+
+
+.comment-links {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.comment-links span{
+  font-size: 0.9em;
+  padding-right: 0.8em;
+  padding-bottom: 0.5em;
+}
+
+img {
+  width: 80%
+}

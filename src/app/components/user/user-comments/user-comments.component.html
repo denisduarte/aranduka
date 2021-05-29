@@ -1,0 +1,34 @@
+<div *ngIf="comments">
+  <div class="comment-entry " *ngFor="let comment of comments">
+    <div class="comment-date d-flex justify-content-start">
+      <div class="col-lg-2">&nbsp;</div>
+      <span class="col-lg-10 text-primary"><span class="color-primary">comentário feito em</span>
+      {{comment.createdAt | date:'longDate'}} às  {{comment.createdAt | date:'shortTime'}}</span>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <img src="{{comment.Book.coverURL}}" alt="">
+      </div>
+      <div class="info col-lg-7">
+        <div class="comment-text text-primary">{{comment.comment}}</div>
+
+        <div class="comment-links d-flex justify-content-end">
+          <span>
+            <a routerLink="/books/entry"
+                [queryParams]="{id: comment.Book._id}"
+                [fragment]="'comments'">
+                <span class="color-primary">ver no contexto</span>
+            </a>
+           </span>
+           <span>
+             <a [routerLink]="" (click)="removeComment(comment._id)">
+                 <span class="color-primary">remover comentário</span>
+             </a>
+            </span>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

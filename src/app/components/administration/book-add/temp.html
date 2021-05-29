@@ -1,0 +1,125 @@
+
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" id="title"
+                class="form-control"
+                placeholder="Insira o título"
+                formControlName="title">
+        <span class="text-muted"
+              *ngIf="!bookForm.get('title').valid && bookForm.get('title').touched">
+              Este campo é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="subtitle">Subtítulo</label>
+        <input type="text" id="subtitle"
+                class="form-control"
+                placeholder="Insira o subtítulo"
+                formControlName="subtitle">
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea rows="4" id="description"
+                  class="form-control"
+                  placeholder="Insira a descrição"
+                  formControlName="description">
+        </textarea>
+      </div>
+
+      <div class="form-group" formArrayName="author">
+        <label for="author">Autores</label>
+        <button type="button" class="btn btn-primary btn-sm add" id="addAuthor"
+                (click)="onAddAuthor()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div *ngFor="let authorControl of getAuthorControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="text-primary" (click)="onRemoveAuthor(i)">Remover</a>
+          <span class="text-muted"
+                *ngIf="!getAuthorControls()[i].valid && getAuthorControls()[i].touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-5">
+          <label for="press">Editora</label>
+          <input type="text" id="press"
+                  class="form-control"
+                  placeholder="Nome da editora"
+                  formControlName="press">
+          <span class="text-muted"
+                *ngIf="!bookForm.get('press').valid && bookForm.get('press').touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="year">Ano</label>
+          <input type="text" id="year"
+                  class="form-control"
+                  placeholder="YYYY"
+                  formControlName="year">
+          <div class="text-muted"
+                *ngIf="!bookForm.get('year').valid && bookForm.get('year').touched">
+                <span *ngIf="bookForm.get('year').errors['required']">Este campo é obrigatório</span>
+                <span *ngIf="bookForm.get('year').errors['min'] ||
+                             bookForm.get('year').errors['max'] ||
+                             bookForm.get('year').errors['pattern']">O ano está inválido</span>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="isbn">ISBN</label>
+          <input type="text" id="isbn"
+                  class="form-control"
+                  placeholder="Insira o ISBN"
+                  formControlName="isbn">
+          <span class="text-muted"
+                *ngIf="!bookForm.get('isbn').valid && bookForm.get('isbn').touched">
+                O ISBN está inválido
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <label for="coverURL">Capa</label>
+          <input type="text" id="coverURL"
+                 class="form-control"
+                 placeholder="Insira a URL da capa"
+                 formControlName="coverURL"
+                 (focusout)="fillImage($event)">
+           <span class="text-muted"
+                 *ngIf="!bookForm.get('coverURL').valid && bookForm.get('coverURL').touched">
+                 A URL está inválida
+           </span>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="coverImg">Preview</label>
+          <img src="" id="coverImg" #bookCoverImg>
+        </div>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <!--ngx-mat-tag-input class="form-control"
+                  [items]="autoCompleteTags"
+                  (change)="addTag($event)"></ngx-mat-tag-input-->
+      </div>
+
+
+      <button type="submit" class="btn btn-primary float-right"
+              [disabled]="!bookForm.valid" >
+                Cadastrar livro
+      </button>
+    </form>

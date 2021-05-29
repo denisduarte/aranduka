@@ -1,0 +1,36 @@
+
+* {
+  color: white;
+}
+
+.userForm {
+  margin: 2em 4em;
+  padding: 2em 4em;
+  background-color: #232323;
+  border-radius: 1em;
+}
+
+input {
+  width: 30em;
+}
+button {
+  margin-top: 1em;
+}
+
+.form-row {
+  margin: 0;
+}
+
+.checkbox {
+  width: 1em;
+  height: 1em;
+  margin-left: 3em;
+}
+
+
+
+.alert-light {
+  margin-top: 5em;
+  color: #BC3F3F;
+  background-color: #ffffffdd;
+}

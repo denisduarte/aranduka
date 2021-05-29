@@ -1,0 +1,23 @@
+<div [ngClass]="['row', 'book-icons', parentClass]" *ngIf="!!user">
+
+  <div class="col-md-3" *ngFor="let action of bookActions">
+
+    <div *ngIf="!action.link" >
+      <div class="nav-link">
+        <i class="fas" [ngClass]="[action.icon, action.colorClass]"></i>
+        <br/>
+        <span class="icon-label">{{action.text}}</span>
+      </div>
+
+    </div>
+
+    <div *ngIf="action.link">
+       <a class="nav-link" (click)="action.link(book)">
+         <i class="fas" [ngClass]="[action.icon, action.colorClass]"></i>
+         <br/>
+         <span class="icon-label">{{action.text}}</span>
+       </a>
+    </div>
+
+  </div>
+</div>

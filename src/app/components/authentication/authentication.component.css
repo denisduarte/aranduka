@@ -1,0 +1,13 @@
+.loginform {
+  margin-top: 5em;
+}
+
+label {
+  color: white;
+}
+
+.sendButton {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1em 0 2em 0;
+}

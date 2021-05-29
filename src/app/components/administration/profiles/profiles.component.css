@@ -1,0 +1,17 @@
+ul{
+  display: flex;
+  justify-content:center;
+  flex-wrap: wrap;
+
+}
+
+li {
+  list-style-type: none;
+  margin: 0.3em;
+  padding-right: 0.6em;
+  border-right: 1px solid #ffffffdd;
+}
+
+li:last-of-type{
+  border-width: 0px;
+}

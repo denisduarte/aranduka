@@ -1,0 +1,21 @@
+
+<table class="text-primary">
+
+  <tr>
+    <th>Código</th>
+    <th>Nome</th>
+    <th>E-mail</th>
+    <th>Perfil de administrador</th>
+  </tr>
+
+  <tr *ngFor="let user of users">
+    <td>{{user._id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.email}}</td>
+    <td class="center">
+      <input type="checkbox" value="1"
+            [checked]="user.administrator" (change)="setAdministrator(user._id, $event)">
+    </td>
+  </tr>
+
+</table>

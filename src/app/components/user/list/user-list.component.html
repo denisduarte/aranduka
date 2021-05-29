@@ -1,0 +1,63 @@
+
+<div *ngIf="user">
+  <div *ngFor="let entry of wishlist">
+    <div class="addedIn d-flex justify-content-start">
+      <div class="col-lg-2">&nbsp;</div>
+      <span class="col-lg-10 text-primary"><span class="color-primary">adicionado à lista em</span> {{entry.book.createdAt | date:'longDate'}}</span>
+    </div>
+    <div class="row">
+      <div class="col-lg-2">
+        <img src="{{entry.book.coverURL}}" default="assets/covers/0.jpg" alt="">
+      </div>
+      <div class="info col-lg-7">
+          <span class="bookTitle">{{entry.book.title}}</span>
+          <span class="bookSubtitle">{{entry.book.subtitle}}</span>
+          <hr/>
+
+          <div *ngIf="entry.book.Authors.length > 0">
+            <span class="bookAuthor text-primary" >
+              <span class="color-primary">Autoria:</span>
+              <span *ngFor="let author of entry.book.Authors; let i = index;">
+                {{ i > 0 ? '|' : ''}} {{author.name}}
+              </span>
+            </span>
+          </div>
+          <div *ngIf="entry.book.Organisers.length > 0">
+            <span class="bookAuthor text-primary" >
+              <span class="color-primary">Organização:</span>
+              <span *ngFor="let organiser of entry.book.Organisers; let i = index;">
+                {{ i > 0 ? '|' : ''}} {{organiser.name}}
+              </span>
+            </span>
+          </div>
+          <div *ngIf="entry.book.Translators.length > 0">
+            <span class="bookAuthor text-primary" >
+              <span class="color-primary">Tradução:</span>
+              <span *ngFor="let translator of entry.book.Translators; let i = index;">
+                {{ i > 0 ? '|' : ''}} {{translator.name}}
+              </span>
+            </span>
+          </div>
+          <div>
+            <span class="bookPressYear text-primary">
+              <span class="color-primary">Editora:</span>
+              {{entry.book.press}}&nbsp;&nbsp;&nbsp;
+              <span class="color-primary">Ano:</span>
+              {{entry.book.year}}
+            </span>
+          </div>
+          <div class="list-actions d-flex justify-content-end">
+            <div class="p-2">
+                <a class="color-primary" routerLink="/books/entry"
+                    [queryParams]="{id: entry.book._id}">Ver livro</a>
+            </div>
+            <div class="p-2 text-primary">|</div>
+            <div class="p-2">
+              <a class="color-primary"
+                (click)="onRemoveFromWishist(entry.book._id)">Remover da minha lista</a>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

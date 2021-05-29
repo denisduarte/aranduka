@@ -1,0 +1,76 @@
+
+<div *ngIf="book">
+  <div class="row">
+    <div class="col-lg-4">
+      <img style="width: 100%" src="{{book.coverURL}}"
+           default="assets/covers/0.jpg" alt="">
+    </div>
+    <div class="info col-lg-8">
+
+      <div class="tags-wrapper">
+        <span class="tag-chip bg-primary"
+              *ngFor="let tag of book.Tags; let j = index;">
+              <a routerLink="/books"
+                  [queryParams]="{tag: tag.name}"
+                  (click)="filterByTag(tag.name)"> {{tag.name}}
+              </a>
+        </span>
+      </div>
+
+      <div class="book-info">
+        <span class="bookCode">{{book.code}}</span>
+        <span class="bookTitle">{{book.title}}</span>
+        <span class="bookSubtitle">{{book.subtitle}}</span>
+        <hr/>
+        <div *ngIf="book.Authors">
+          <span class="color-primary">Autoria:</span>
+          <span class="bookAuthor" *ngFor="let author of book.Authors; let i = index;">
+            {{ i > 0 ? '|' : ''}} {{author.name}}
+          </span>
+        </div>
+
+        <div *ngIf="book.Organisers.length">
+          <span class="color-primary">Organização:</span>
+          <span class="bookAuthor" *ngFor="let organiser of book.Organisers; let i = index;">
+            {{ i > 0 ? '|' : ''}} {{organiser.name}}
+          </span>
+        </div>
+
+        <div *ngIf="book.Translators.length">
+          <span class="color-primary">Tradução:</span>
+          <span class="bookAuthor" *ngFor="let translator of book.Translators; let i = index;">
+            {{ i > 0 ? '|' : ''}} {{translator.name}}
+          </span>
+        </div>
+
+
+        <div class="otherinfo row">
+            <span *ngIf="book.press" class="col-sm-6"><span class="color-primary">Editora:</span> {{book.press}}</span>
+            <span *ngIf="book.year" class="col-sm-6"><span class="color-primary">Ano:</span> {{book.year}}</span>
+            <span *ngIf="book.edition" class="col-sm-6"><span class="color-primary">Edição:</span> {{book.edition}}</span>
+            <span *ngIf="book.collection" class="col-sm-6"><span class="color-primary">Coleção:</span> {{book.collection}}</span>
+            <span *ngIf="book.volume" class="col-sm-6"><span class="color-primary">Volume:</span> {{book.volume}}</span>
+            <span *ngIf="book.pages" class="col-sm-6"><span class="color-primary">Número de Páginas:</span> {{book.pages}}</span>
+            <span *ngIf="book.isbn" class="col-sm-6"><span class="color-primary">ISBN:</span> {{book.isbn}}</span>
+        </div>
+
+
+        <span class="bookDescription">
+          {{book.description}}
+        </span>
+
+        <span class="bookEdit"  *ngIf="user && user.administrator">
+          <a class="color-primary" routerLink="/admin/add"
+              [queryParams]="{id: book._id}">Alterar</a>
+        </span>
+      </div>
+
+        <app-actions [parentClass]="'book-entry'" [book]="book"></app-actions>
+
+    </div>
+  </div>
+  <hr>
+  <a name="comments" id="comments" #commentSection> </a>
+  <app-comments *ngIf="user"></app-comments>
+
+</div>

@@ -1,0 +1,13 @@
+
+.gallery {
+  margin: 3em
+}
+
+.image {
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}

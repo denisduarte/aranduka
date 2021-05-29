@@ -1,0 +1,19 @@
+
+button {
+  height: 50%;
+  align-self: flex-end;
+
+}
+.section-header {
+  position: absolute;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.3em;
+  padding: 0 10px;
+  color: #121212;
+  background-color: #FFFFFFCC;
+}
+
+.section {
+  position: relative;
+  height: 3em;
+}

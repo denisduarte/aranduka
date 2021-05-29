@@ -1,0 +1,31 @@
+<div class="comment-section">
+  <h2>Comentários</h2>
+
+  <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+    <textarea rows="4" id="comment"
+              class="form-control"
+              placeholder="Escreva um comentário"
+              formControlName="comment">
+    </textarea>
+    <button type="submit" class="btn btn-primary float-right bg-primary"
+            [disabled]="!commentForm.valid" >
+              inserir comentário
+    </button>
+  </form>
+
+  <div class="comment-list">
+    <div class="comment-entry" *ngFor="let comment of book.Comments">
+
+        <span class="comment-text">
+          <span class="comment-user">{{comment.User.name}}</span>
+          {{comment.comment}}
+        </span>
+        <span class="comment-date float-right">{{comment.createdAt | date:'longDate'}}</span>
+    </div>
+
+  </div>
+
+  <div class="d-flex justify-content-center loadmore" *ngIf="book.total_comments > commentPage * commentsPerPage">
+    <a (click)="loadMoreComments();">Carregar mais 10 comentários</a>
+  </div>
+</div>

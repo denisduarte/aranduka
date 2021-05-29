@@ -1,0 +1,19 @@
+<div>
+  <ul>
+    <li *ngFor="let letter of alphabet">
+      <a class="color-primary"
+          [routerLink]="['/admin', 'profiles', 'list']"
+          [queryParams]="{letter: letter}"
+          routerLinkActive="active">{{letter | uppercase}}</a>
+    </li>
+    <li>
+      <a class="color-primary"
+          [routerLink]="['/admin', 'profiles', 'list']"
+          routerLinkActive="active">Toda gente</a>
+    </li>
+  </ul>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>

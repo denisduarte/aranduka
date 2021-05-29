@@ -1,0 +1,92 @@
+body {
+  height: 100%;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #121212;
+}
+
+input {
+  color: #121212!important;
+}
+
+app-lendings, app-profiles, app-book-add, app-user-comments, app-user-list {
+  width: inherit;
+}
+
+
+.bg-light {
+  background-color: #FFFFFFDD!important;
+}
+.bg-primary {
+  background-color: #FEAE9399!important;
+  border-color: #FEAE9300;
+}
+.bg-primary:hover {
+  background-color: #FEAE93DD!important;
+  border-color: #FEAE9300;
+}
+.bg-primary.disabled {
+  background-color: #FEAE9360!important;
+  border-color: #FEAE9300;
+}
+
+.bg-layer1 {
+  background-color: #1E1E1E;
+}
+.bg-layer2 {
+  background-color: #232323;
+}
+.bg-layer3 {
+  background-color: #252525;
+}
+.bg-layer4 {
+  background-color: #272727;
+}
+.bg-layer5 {
+  background-color: #2C2C2C;
+}
+.bg-layer6 {
+  background-color: #2E2E2E;
+}
+.bg-layer7 {
+  background-color: #333333;
+}
+.bg-layer8 {
+  background-color: #363636;
+}
+.bg-layer9 {
+  background-color: #383838;
+}
+
+/* OVERIDING BOOTSTRAP CLASSES */
+.btn-primary {
+  color: #121212!important;
+  border-color: #FEAE9300;
+  border-width: 3px;
+  border-radius: 10px;
+}
+button.btn-primary.bg-primary:hover, button.btn-primary.bg-primary:focus {
+  background-color: #FEAE93DD!important;
+}
+.btn-primary.disabled, .btn-primary:disabled {
+    color: #FFFFFFDD#;
+}
+
+.text-primary {
+    color: #FFFFFFDD!important;
+    font-weight: 400;
+}
+
+.color-primary {
+    color: #FEAE9399!important;
+    font-weight: 400;
+}
+
+.color-primary.disabled {
+    color: #FEAE9360!important;
+    font-weight: 400;
+}
+
+a.color-primary:focus, a.color-primary:hover, a.text-primary:hover  {
+    color: #FEAE93DD!important;
+    font-weight: 400;
+}

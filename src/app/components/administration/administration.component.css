@@ -1,0 +1,41 @@
+app-lendings {
+  width: inherit;
+  background-color: red;
+}
+
+.user-menu {
+  margin-right: 0;
+  padding-right: 0;
+  height: 100vh;
+}
+
+.user-menu ul{
+  position: relative;
+  top: 2px;
+  width: inherit;
+}
+
+.user-menu li {
+  margin: 1px 0;
+  padding-left: 10px;
+}
+
+.user-menu li:hover {
+  background-color: #2E2E2E;
+}
+.user-menu li a.nav-link:hover {
+  color: #FFFFFFDD!important;
+}
+
+.user-menu li a {
+  margin: 0;
+}
+
+.user-menu a.active, .user-menu a.nav-link.active:hover {
+  background-color: #FEAE9399;
+  color: #121212!important;
+}
+
+.nav-link {
+  color: white;
+}

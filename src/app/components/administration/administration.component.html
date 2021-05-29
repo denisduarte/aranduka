@@ -1,0 +1,20 @@
+<div class="row">
+
+  <div class="nav col-lg-2 user-menu bg-layer1">
+    <ul class="nav flex-column">
+      <li class="nav-item bg-layer4">
+        <a class="nav-link text-primary" [routerLink]="['/admin', 'lendings']" routerLinkActive="active">Empréstimos</a>
+      </li>
+      <li class="nav-item bg-layer4">
+        <a class="nav-link text-primary" [routerLink]="['/admin', 'add']" routerLinkActive="active">Adicionar Livro</a>
+      </li>
+      <li class="nav-item bg-layer4">
+        <a class="nav-link text-primary" [routerLink]="['/admin', 'profiles']" routerLinkActive="active">Perfis de usuário</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="nav col-lg-10">
+    <router-outlet></router-outlet>
+  </div>
+</div>

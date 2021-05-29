@@ -1,0 +1,5 @@
+<div class="row gallery">
+  <div class="col-lg-3 image" *ngFor="let image of album; let i=index">
+    <img [src]="image.thumb" (click)="open(i)" />
+  </div>
+</div>

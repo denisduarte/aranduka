@@ -1,0 +1,75 @@
+
+.icon-label {
+  display: block;
+  font-size: 0.5em!important;
+}
+
+.icon-red {
+  color: #CF6679!important;
+}
+.icon-green {
+  color: #096F64!important;
+}
+
+.book-icons.book-list {
+  position: absolute;
+  bottom: 6px;
+  xbackground-color: #272727;
+
+  height: auto!important;
+  width: 292px;
+  font-size: 0.8em;
+  flex-wrap: inherit;
+  margin-left: 0;
+
+}
+.book-icons.book-entry {
+  position: absolute;
+  bottom: 0;
+  width: inherit;
+  width: -webkit-fill-available;
+  /*padding-right: 3em;*/
+  font-size: 1.5em;
+}
+
+.book-icons div {
+  /*border: 1px solid #1E1E1E;*/
+  padding: 0.1em 0;
+  text-align: center;
+}
+
+.book-icons span {
+  color: #FFFFFFDD;
+}
+
+
+.book-icons a {
+  width: auto;
+  cursor: pointer;
+  padding-bottom: 3px;
+
+}
+.book-icons a:hover {
+  width: auto;
+  color: #FFFFFFDD;
+  background-color: #2E2E2E;
+  border-color: #2E2E2E;
+  border-radius: 5px;
+}
+.book-icons a:hover i {
+  color: #FEAE93DD;
+}
+
+.book-icons a.disabled {
+  color: #FFFFFF60;
+  text-decoration: none;
+  cursor: default;
+}
+
+.book-icons a.disabled i {
+  color: #FEAE9360!important;
+}
+
+.book-icons i {
+  color: #FEAE9399;
+}

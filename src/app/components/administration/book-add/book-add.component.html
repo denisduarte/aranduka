@@ -1,0 +1,242 @@
+
+    <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="title">Código</label>
+        <input type="hidden" id="_id" formControlName="_id">
+        <input type="text" id="code"
+                class="form-control"
+                placeholder="Insira o código"
+                formControlName="code">
+        <span class="text-muted"
+              *ngIf="!bookForm.get('code').valid && bookForm.get('code').touched">
+              Este campo é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="title">Título</label>
+        <input type="text" id="title"
+                class="form-control"
+                placeholder="Insira o título"
+                formControlName="title">
+        <span class="text-muted"
+              *ngIf="!bookForm.get('title').valid && bookForm.get('title').touched">
+              Este campo é obrigatório
+        </span>
+      </div>
+
+      <div class="form-group">
+        <label for="subtitle">Subtítulo</label>
+        <input type="text" id="subtitle"
+                class="form-control"
+                placeholder="Insira o subtítulo"
+                formControlName="subtitle">
+      </div>
+      <div class="form-group">
+        <label for="description">Descrição</label>
+        <textarea rows="4" id="description"
+                  class="form-control"
+                  placeholder="Insira a descrição"
+                  formControlName="description">
+        </textarea>
+      </div>
+
+      <div class="form-group" formArrayName="author">
+        <label for="author">Autoria</label>
+        <button type="button" class="btn btn-primary bg-primary btn-sm add" id="addAuthor"
+                (click)="onAddAuthor()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="add-control" *ngFor="let authorControl of getAuthorControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="color-primary" (click)="onRemoveAuthor(i)">Remover</a>
+          <span class="text-muted"
+                *ngIf="!getAuthorControls()[i].valid && getAuthorControls()[i].touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" formArrayName="organiser">
+        <label for="organiser">Organização</label>
+        <button type="button" class="btn btn-primary bg-primary btn-sm add" id="addOrganiser"
+                (click)="onAddOrganiser()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="add-control" *ngFor="let organiserControl of getOrganiserControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="color-primary" (click)="onRemoveOrganiser(i)">Remover</a>
+          <span class="text-muted"
+                *ngIf="!getOrganiserControls()[i].valid && getOrganiserControls()[i].touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" formArrayName="translator">
+        <label for="translator">Tradução</label>
+        <button type="button" class="btn btn-primary bg-primary btn-sm add" id="addTranslator"
+                (click)="onAddTranslator()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="add-control" *ngFor="let translatorControl of getTranslatorControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="color-primary" (click)="onRemoveTranslator(i)">Remover</a>
+          <span class="text-muted"
+                *ngIf="!getTranslatorControls()[i].valid && getTranslatorControls()[i].touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group col-md-5">
+          <label for="press">Editora</label>
+          <input type="text" id="press"
+                  class="form-control"
+                  placeholder="Nome da editora"
+                  formControlName="press">
+          <span class="text-muted"
+                *ngIf="!bookForm.get('press').valid && bookForm.get('press').touched">
+                Este campo é obrigatório
+          </span>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="year">Ano</label>
+          <input type="text" id="year"
+                  class="form-control"
+                  placeholder="YYYY"
+                  formControlName="year">
+          <div class="text-muted"
+                *ngIf="!bookForm.get('year').valid && bookForm.get('year').touched">
+                <span *ngIf="bookForm.get('year').errors['required']">Este campo é obrigatório</span>
+                <span *ngIf="bookForm.get('year').errors['min'] ||
+                             bookForm.get('year').errors['max'] ||
+                             bookForm.get('year').errors['pattern']">O ano está inválido</span>
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="edition">Edição</label>
+          <input type="text" id="edition"
+                  class="form-control"
+                  placeholder="Insira a Edição"
+                  formControlName="edition">
+        </div>
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group col-md-5">
+          <label for="collection">Coleção</label>
+          <input type="text" id="collection"
+                  class="form-control"
+                  placeholder="Insira a Coleção"
+                  formControlName="collection">
+        </div>
+
+        <div class="form-group col-md-5">
+          <label for="volume">Volume</label>
+          <input type="text" id="volume"
+                  class="form-control"
+                  placeholder="Insira o volume"
+                  formControlName="volume">
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="year">Páginas</label>
+          <input type="text" id="pages"
+                  class="form-control"
+                  placeholder="Insira o numero de páginas"
+                  formControlName="pages">
+          <div class="text-muted"
+                *ngIf="!bookForm.get('pages').valid && bookForm.get('pages').touched">
+                <span *ngIf="bookForm.get('pages').errors['required']">Este campo deve ser númerico</span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="form-row">
+
+        <div class="form-group col-md-4">
+          <label for="ex">Exemplar</label>
+          <input type="text" id="ex"
+                  class="form-control"
+                  placeholder="Insira o número de exemplares"
+                  formControlName="ex">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="format">Formato</label>
+          <input type="text" id="format"
+                  class="form-control"
+                  placeholder="Insira o Formato"
+                  formControlName="format">
+        </div>
+
+        <div class="form-group col-md-4">
+          <label for="isbn">ISBN</label>
+          <input type="text" id="isbn"
+                  class="form-control"
+                  placeholder="Insira o ISBN"
+                  formControlName="isbn">
+          <span class="text-muted"
+                *ngIf="!bookForm.get('isbn').valid && bookForm.get('isbn').touched">
+                O ISBN está inválido
+          </span>
+        </div>
+      </div>
+
+      <div class="form-group" formArrayName="local">
+        <label for="local">Local</label>
+        <button type="button" class="btn btn-primary bg-primary btn-sm add" id="addLocal"
+                (click)="onAddLocal()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="add-control" *ngFor="let localControl of getLocalControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="color-primary" (click)="onRemoveLocal(i)">Remover</a>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="condition">Condição</label>
+          <input type="text" id="condition"
+                  class="form-control"
+                  placeholder="Insira a condição"
+                  formControlName="condition">
+        </div>
+
+      </div>
+
+
+
+      <div class="form-group" formArrayName="tags">
+        <label for="tags">Etiquetas</label>
+        <button type="button" class="btn btn-primary bg-primary btn-sm add" id="addTags"
+                (click)="onAddTag()">
+          <i class="fa fa-plus"></i>
+        </button>
+        <div class="add-control" *ngFor="let tagsControl of getTagsControls(); let i = index">
+          <input type="text" class="form-control"
+                  [formControlName]="i">
+          <a class="color-primary" (click)="onRemoveTag(i)">Remover</a>
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-primary bg-primary float-right"
+              [disabled]="!bookForm.valid" >
+                Cadastrar livro
+      </button>
+    </form>

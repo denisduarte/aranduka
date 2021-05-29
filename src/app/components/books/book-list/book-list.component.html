@@ -1,0 +1,113 @@
+<div class="row tag-list">
+  <div *ngFor="let tag of this.filterTag; let i = index;" class="tag-chip"> 
+      <span>{{tag}}</span>
+      <a (click)="removeTag(i)"><i class="far fa-times-circle"></i></a>
+  </div>
+</div>
+
+<div class="d-flex justify-content-end list-order">
+  <span class="text-primary">ordernar livros por
+    <a class="color-primary" (click)="sortOrder('title')">Título</a>
+    <span class="color-primary" *ngIf="sortField === 'title'">
+      <i class="fas" [ngClass]="(sortDirection === -1)? 'fa-sort-down':'fa-sort-up'"></i>
+    </span>
+    |
+    <a class="color-primary" (click)="sortOrder('createdAt')">Data de cadastro</a>
+    <span class="color-primary" *ngIf="sortField === 'createdAt'">
+      <i class="fas" [ngClass]="(sortDirection === -1)? 'fa-sort-down':'fa-sort-up'"></i>
+    </span>
+  </span>
+</div>
+
+<div class="infinite-scroll"
+            infiniteScroll
+            [infiniteScrollDistance]="20"
+            [infiniteScrollThrottle]="500"
+            (scrolled)="onScroll()"
+            [scrollWindow]="false">
+
+  <div class="container">
+    <ul *ngIf="bookList" class="items row" #bookUl>
+      <li class="col-12 col-sm-4 col-md-3 col-lg-2"
+          *ngFor="let book of bookList; let i = index;"
+          (mouseover)="mouseEnter(i)"
+          (mouseleave)="mouseOut(i)">
+
+          <div class="bookdiv justify-content-center">
+            <div class="bg-img">
+              <a routerLink="/books/entry" [queryParams]="{id: book._id}">
+                <img src="{{book.coverURL}}" default="assets/covers/0.jpg">
+              </a>
+            </div>
+            <div class="info book-list">
+            	<div class="content" #bookDiv>
+                <div class="tags-wrapper">
+                  <span class="tag-chip bg-primary"
+                        *ngFor="let tag of book.Tags; let j = index;">
+                        <a routerLink="/books"
+                            [queryParams]="{tag: tag.name}"
+                            (click)="filterByTag(tag.name)"> {{tag.name}}
+                        </a>
+                  </span>
+                </div>
+
+                <div class="book-info">
+
+                  <span class="bookCode">{{book.code}}</span>
+                  <span class="bookTitle text-primary">{{book.title}}</span>
+                  <span class="bookSubtitle text-primary" *ngIf="book.subtitle">{{book.subtitle}}</span>
+                  <hr/>
+                  <div class="authors bookAuthor text-primary"
+                        *ngIf="book.Authors.length > 0">
+                    <span class="color-primary">Autoria:</span>
+                    <span *ngFor="let author of book.Authors; let i = index;">
+                      {{ i > 0 ? '|' : ''}} {{author.name}}&nbsp;
+                    </span>
+                  </div>
+                  <div class="authors text-primary"
+                        *ngIf="book.Organisers.length > 0">
+                    <span class="color-primary">Organização:</span>
+                    <span *ngFor="let organiser of book.Organisers; let i = index;">
+                      {{ i > 0 ? '|' : ''}} {{organiser.name}}&nbsp;
+                    </span>
+                  </div>
+                  <div class="authors text-primary"
+                        *ngIf="book.Translators.length > 0">
+                    <span class="color-primary">Tradução:</span>
+                    <span *ngFor="let translator of book.Translators; let i = index;">
+                      {{ i > 0 ? '|' : ''}} {{translator.name}}&nbsp;
+                    </span>
+                  </div>
+                  <span class="bookPress text-primary">
+                      <span class="color-primary" *ngIf="book.press">Editora:</span>
+                      {{book.press}}&nbsp;&nbsp;&nbsp;
+                      <span class="color-primary" *ngIf="book.year">Ano:</span>
+                      {{book.year}}</span>
+                  <span class="bookDescription text-primary"
+                        *ngIf="book.description">
+                    {{(book.description.length <= 300) ? book.description :
+                      book.description.substring(book.description, 300) + '...'}} </span>
+                  <div class="bookMore">
+
+                    <span *ngIf="user && user.administrator">
+                      <a class="color-primary" routerLink="/admin/add"
+                          [queryParams]="{id: book._id}">alterar</a>
+                      &nbsp;&nbsp;|&nbsp;&nbsp;
+                    </span>
+
+                    <a class="color-primary" routerLink="/books/entry"
+                        [queryParams]="{id: book._id}">
+                        <span >ver mais</span>
+                    </a>
+                   </div>
+                </div>
+
+                <app-actions [parentClass]="'book-list'" [book]="book"></app-actions>
+
+            	</div>
+            </div>
+          </div>
+      </li>
+    </ul>
+  </div>
+</div>

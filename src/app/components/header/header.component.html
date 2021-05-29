@@ -1,0 +1,61 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark" *ngIf="this.router.url !== '/'">
+  <div class="navbar-brand text-primary" routerLink="/">
+      <img src="./assets/agralha1.png" height="50" alt="Biblioteca Social CSA A Gralha Centro Social Auto-gerido">
+  </div>
+  <button class="navbar-toggler" type="button"
+          data-toggle="collapse"
+          data-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 separate">
+
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-primary" routerLink="/audiovisual">Audiovisual</a>
+      </li>
+      <li class="nav-item active" routerLinkActive="active">
+        <a class="nav-link text-primary" routerLink="/books">Livros<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-primary" routerLink="/miscelanea">Miscelânea</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link text-primary" routerLink="/revistas">Revistas</a>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" *ngIf="this.router.url !== '/books/add'">
+      <input class="form-control mr-sm-2 flex-fill bg-light" type="search" placeholder="Search"
+        (input)="onUpdateSearchInput($event)">
+    </form>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 dropdown" *ngIf="this.router.url !== '/auth' && this.router.url !== '/signup'">
+      <li class="nav-item login" *ngIf="!user">
+        <a class="nav-link text-primary " routerLink="/auth">Acesso</a>
+      </li>
+      <li class="nav-item dropdown"  *ngIf="user">
+
+        <a class="nav-link dropdown-toggle text-primary" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.name | shortname}}
+        </a>
+        <div class="dropdown-menu bg-layer1" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item color-primary" [routerLink]="['user', 'data']">Meus dados</a>
+          <a class="dropdown-item color-primary" [routerLink]="['user', 'list']">Minha lista</a>
+          <a class="dropdown-item color-primary" [routerLink]="['user', 'lendings']">Meus empréstimos</a>
+          <a class="dropdown-item color-primary" [routerLink]="['user', 'comments']">Meus comentários</a>
+          <hr/>
+          <a class="dropdown-item color-primary" (click)="onLogout()">Logout</a>
+
+          <div *ngIf="user.administrator">
+            <hr/>
+            <a class="dropdown-item color-primary" [routerLink]="['admin', 'lendings']">Gestão</a>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,0 +1,194 @@
+
+span {
+  color: #FFFFFFDD;
+  display: block;
+}
+
+span.color-primary {
+  display: inline;
+}
+
+span.bookAuthor {
+  display: inline;
+}
+
+.info hr {
+ margin: 1em 3em;
+ border-color: #FEAE9399;
+ border-width: 1px;
+}
+
+hr {
+ margin: 2em 3em;
+ border-color: #FEAE9399;
+ border-width: 1px;
+}
+
+.book-info {
+  background-color: #232323;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 3px 3px 100px 3px;
+
+}
+
+.bookTitle {
+  font-size: 2em;
+}
+
+.bookSubtitle {
+  font-size: 1.2em;
+}
+
+.bookAuthor{
+  font-size: 1em;
+}
+
+.otherinfo {
+  font-size: 1em;
+  color: #FFFFFFDD;
+}
+
+
+.bookDescription {
+  margin-top: 1em;
+  font-size: 0.9em;
+}
+
+
+
+
+.book-icons {
+  xmargin: 2em;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-icons i {
+  color: white;
+  font-size: 2em;
+}
+
+.book-icons i.icon-red {
+  color: #CF6679;
+}
+
+.book-icons span {
+  text-align: center;
+  font-size: 0.8em;
+  margin-top: 0.5em;
+}
+.book-icons a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  padding: 6px;
+}
+.book-icons i{
+    color: #FEAE9399;
+}
+.book-icons a:hover {
+  background-color: #272727;
+  border-radius: 10px;
+}
+.book-icons a:hover i{
+    color: #FEAE93DD;
+}
+
+.book-icons a.fakelink {
+  cursor: default;
+}
+.book-icons a.fakelink:hover {
+  background-color: #121212;
+  border-radius: 10px;
+}
+.book-icons a.fakelink:hover i {
+  color: #CF6679;
+}
+
+.bookCode {
+  text-align: end;
+  font-size: 0.7em;
+  color: #A77766;
+  margin-bottom: -1em;
+}
+
+.bookEdit {
+  text-align: right;
+
+}
+
+
+
+.tags-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+
+    top: 0;
+    margin-top: 3px;
+    margin-left: 2px;
+    xposition: absolute;
+    height: auto!important;
+}
+
+.tag-chip {
+    display: inline-flex;
+    position: relative;
+
+    color: #fff;
+    font-size: 0.8em;
+
+    padding: 0.8em 0.7em;
+    margin: 0 0.6em 0.4em 0.2em;
+    border-radius: 0.6em;
+
+    box-sizing: border-box;
+    border: none;
+
+    min-height: 8px;
+    height: 1px;
+
+    align-items: center;
+    cursor: default;
+}
+
+.tag-chip a {
+    display: contents!important;
+    color: #121212;
+}
+
+.tag-list .tag-chip {
+  display: inline-flex;
+  position: relative;
+
+  color: #fff;
+  font-size: 0.8em;
+
+  background-color: #BC3F3F;
+  padding: 12px 8px;
+  margin: 4px;
+  border-radius: 10px;
+
+  box-sizing: border-box;
+  border: none;
+
+  min-height: 8px;
+  height: 1px;
+
+  align-items: center;
+  cursor: default;
+}
+
+.tag-list .tag-chip span {
+  margin-right: 5px;
+}
+.tag-list .tag-chip a {
+  font-size: 0.8em;
+  cursor: pointer;
+}
