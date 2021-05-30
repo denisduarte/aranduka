@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  APIEndpoint: 'https://aranduka.herokuapp.com'
+  APIEndpoint: 'http://localhost:5000'
 };
 
 /*

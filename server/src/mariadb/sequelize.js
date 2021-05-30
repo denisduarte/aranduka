@@ -105,7 +105,8 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   User.belongsToMany(Book, { as: 'waiting', through: Wait, unique: false })
 
 
-sequelize.sync({ force: false })
+var flag_drop = (process.env.DB_DROP === 'true');
+sequelize.sync({ force: flag_drop })
   .then(() => {
     console.log(`Database & tables created!`)
   })

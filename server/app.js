@@ -40,7 +40,7 @@ if (process.env.DB === "mongodb") {
 
 const app = express();
 var corsOptions = {
-      origin: '*',
+      origin: process.env.CORS_DOMAIN,
       optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));
