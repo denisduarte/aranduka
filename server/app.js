@@ -6,7 +6,6 @@ const dotenvExpand = require('dotenv-expand');
 var env = dotenv.config();
 dotenvExpand(env);
 
-
 var routes = null;
 
 if (process.env.DB === "mongodb") {
@@ -41,7 +40,7 @@ if (process.env.DB === "mongodb") {
 
 const app = express();
 var corsOptions = {
-      origin: '*',
+      origin: ["http://lea.eco.br", "http://localhost"],
       optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));

@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment';
+import { environment } from '../../environments/environment';
 
 import { Injectable, EventEmitter } from "@angular/core";
 import { throwError, BehaviorSubject, Observable, Subscription } from 'rxjs';

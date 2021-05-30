@@ -1,4 +1,4 @@
-import { environment } from './../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
