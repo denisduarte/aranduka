@@ -40,29 +40,12 @@ if (process.env.DB === "mongodb") {
 
 const app = express();
 
-/*
+
 var corsOptions = {
       origin: process.env.CORS_DOMAIN,
       optionsSuccessStatus: 200
 };
-//app.use(cors(corsOptions));
-
-var allowCrossDomain = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type,      Accept");
-  next();
-};
-app.use(allowCrossDomain);
-*/
-
-const allowedOrigins = ['http://lea.eco.br', 'http://localhost:4200'];
-
-const options = {
-  origin: allowedOrigins
-};
-//app.use(cors(options));
-
-app.use(cors())
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use("/api", routes);
