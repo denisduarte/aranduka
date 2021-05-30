@@ -6,6 +6,7 @@ const auth = require("./middleware/auth");
 
 const path = require('path');
 const fs = require('fs');
+const request = require('request');
 const { sendMail } = require("../../mailer")
 
 const { Book, Author, Organiser, Translator,
@@ -904,7 +905,7 @@ const StreamArray = require('stream-json/streamers/StreamArray');
 router.post("/populate", async (req, res) => {
 
 	new Promise((resolve, reject) => {
-	    fs.createReadStream('../resources/livros.json')
+	    /*fs.createReadStream(process.env.POPULATE_BOOKS)
 	      .pipe(StreamArray.withParser())
 	      .on("data", row => { BookController.create(row.value,
 																									 row.value.Authors,
@@ -915,6 +916,28 @@ router.post("/populate", async (req, res) => {
 														})
 	      .on("error", err => { reject(err) })
 	      .on("end", () => { resolve() });
+				*/
+
+				request(process.env.POPULATE_BOOKS, function (error, response, body) {
+					  if (!error && response.statusCode == 200) {
+					     var json = JSON.parse(body);
+
+							 for (var row in json){
+								 var book = json[row];
+								 BookController.create(book,
+																			 book.Authors,
+																			 book.Organisers,
+																			 book.Translators,
+																			 book.Locals,
+																			 book.Tags)
+							 }
+					  }
+				});
+
+
+
+
+
 	  });
 
 	res.status(200).send("Database populated")

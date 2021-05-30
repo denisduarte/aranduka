@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Lightbox } from 'ngx-lightbox';
@@ -15,8 +17,9 @@ interface Photo {
             thumb: string
 };
 
+const APIEndpoint = environment.APIEndpoint;
 const imagesDir = './assets/gallery/'
-const imagesUrl = "http://localhost:5000/api/gallery/list";
+const imagesUrl = APIEndpoint + "/api/gallery/list";
 
 @Component({
   selector: 'app-gallery',

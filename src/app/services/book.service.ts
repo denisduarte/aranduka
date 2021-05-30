@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { Injectable, EventEmitter } from "@angular/core";
 import { throwError, BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from "@angular/common/http";
@@ -17,32 +19,33 @@ const httpOptions = {
                              "Access-Control-Allow-Origin": "*,Origin, X-Requested-With, Content-Type, Accept" })
 };
 
+const APIEndpoint = environment.APIEndpoint;
+
 @Injectable({
   providedIn: 'root'
 })
-
 export class BookService {
 
-  urlList = "http://localhost:5000/api/books/";
-  urlAdd = "http://localhost:5000/api/books/add";
-  urlFetch = "http://localhost:5000/api/book/";
-  urlUpdate = "http://localhost:5000/api/book/";
-  urlTags = "http://localhost:5000/api/tags/";
-  urlAddComment = "http://localhost:5000/api/book/comment/add";
-  urlGetComment = "http://localhost:5000/api/book/comments";
-  urlDeleteComments = "http://localhost:5000/api/book/comment/remove/"
+  urlList = APIEndpoint + "/api/books/";
+  urlAdd = APIEndpoint + "/api/books/add";
+  urlFetch = APIEndpoint + "/api/book/";
+  urlUpdate = APIEndpoint + "/api/book/";
+  urlTags = APIEndpoint + "/api/tags/";
+  urlAddComment = APIEndpoint + "/api/book/comment/add";
+  urlGetComment = APIEndpoint + "/api/book/comments";
+  urlDeleteComments = APIEndpoint + "/api/book/comment/remove/"
 
-  urlCheckAvailable = "http://localhost:5000/api/book/available"
+  urlCheckAvailable = APIEndpoint + "/api/book/available"
 
-  urlBorrowBook = "http://localhost:5000/api/book/borrow"
-  urlReturnBook = "http://localhost:5000/api/book/return"
-  urlRenewBook = "http://localhost:5000/api/book/renew"
+  urlBorrowBook = APIEndpoint + "/api/book/borrow"
+  urlReturnBook = APIEndpoint + "/api/book/return"
+  urlRenewBook = APIEndpoint + "/api/book/renew"
 
-  urlAddToWishList = "http://localhost:5000/api/book/wish"
-  urlRemoveFromWishList = "http://localhost:5000/api/book/unwish"
+  urlAddToWishList = APIEndpoint + "/api/book/wish"
+  urlRemoveFromWishList = APIEndpoint + "/api/book/unwish"
 
-  urlEnterWaitingList = "http://localhost:5000/api/book/wait"
-  urlLeaveWaitingList = "http://localhost:5000/api/book/unwait"
+  urlEnterWaitingList = APIEndpoint + "/api/book/wait"
+  urlLeaveWaitingList = APIEndpoint + "/api/book/unwait"
 
 
   totalBooks: number = 0;

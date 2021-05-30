@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -15,11 +17,12 @@ const httpOptions = {
                              "Access-Control-Allow-Origin": "*,Origin, X-Requested-With, Content-Type, Accept" })
 };
 
-const URL_login = "http://localhost:5000/api/users/login";
-const URL_logout = "http://localhost:5000/api/users/me/logout";
-const URL_updateUser = "http://localhost:5000/api/users/update";
-const URL_getComments = "http://localhost:5000/api/users/comments";
-const URL_AddUser = "http://localhost:5000/api/users/add";
+const APIEndpoint = environment.APIEndpoint;
+const URL_login = APIEndpoint + "/api/users/login";
+const URL_logout = APIEndpoint + "/api/users/me/logout";
+const URL_updateUser = APIEndpoint + "/api/users/update";
+const URL_getComments = APIEndpoint + "/api/users/comments";
+const URL_AddUser = APIEndpoint + "/api/users/add";
 
 @Injectable({
   providedIn: 'root'

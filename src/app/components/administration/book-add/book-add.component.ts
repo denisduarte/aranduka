@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { Component, OnInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
@@ -6,6 +8,8 @@ import { Subscription } from 'rxjs';
 import { BookService } from "../../../services/book.service";
 import { Book } from "../../../models/book.model";
 
+const APIEndpoint = environment.APIEndpoint;
+
 @Component({
   selector: 'app-book-add',
   templateUrl: './book-add.component.html',
@@ -13,7 +17,7 @@ import { Book } from "../../../models/book.model";
 })
 export class BookAddComponent implements OnInit {
 
-  apiUrl = "http://localhost:5000/api/books";
+  apiUrl = APIEndpoint + "/api/books";
   bookForm: FormGroup;
   editMode = false;
   routeSubscription: Subscription;

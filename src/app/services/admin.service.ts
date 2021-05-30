@@ -1,3 +1,5 @@
+import { environment } from './../environments/environment';
+
 import { Injectable, EventEmitter } from "@angular/core";
 import { throwError, BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from "@angular/common/http";
@@ -14,16 +16,17 @@ const httpOptions = {
                              "Access-Control-Allow-Origin": "*,Origin, X-Requested-With, Content-Type, Accept" })
 };
 
+const APIEndpoint = environment.APIEndpoint;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  urlLendings = "http://localhost:5000/api/admin/lendings"
-  urlReturnBook = "http://localhost:5000/api/admin/return"
-  urlListUsers = "http://localhost:5000/api/admin/users"
-  urlSetAdmin = "http://localhost:5000/api/admin/set"
+  urlLendings = APIEndpoint + "/api/admin/lendings"
+  urlReturnBook = APIEndpoint + "/api/admin/return"
+  urlListUsers = APIEndpoint + "/api/admin/users"
+  urlSetAdmin = APIEndpoint + "/api/admin/set"
 
   constructor(private http: HttpClient,
               private userService: UserService) { }
