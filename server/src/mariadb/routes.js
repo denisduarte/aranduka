@@ -918,10 +918,13 @@ router.post("/populate", async (req, res) => {
 	      .on("end", () => { resolve() });
 				*/
 
-				console.log('log');
+				console.log(process.env.POPULATE_BOOKS);
 				request(process.env.POPULATE_BOOKS, function (error, response, body) {
+						console.log(error);
+						console.log(response.statusCode);
 					  if (!error && response.statusCode == 200) {
 					     var json = JSON.parse(body);
+							 console.log(json);
 
 							 for (var row in json){
 								 var book = json[row];
