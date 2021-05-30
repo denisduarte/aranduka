@@ -59,12 +59,13 @@ function reserveBookToNextInQueue(BookId) {
 
 router.get('/gallery/list', (req, res) => {
 
-	const directory = '../src/assets/gallery';
+	/*const directory = '../src/assets/gallery';
 	fs.readdir(directory, (err, files) => {
 	  const images = files.filter(el => /\.jpg/.test(el))
 	  res.status(200).send(images)
 	});
-
+*/
+   console.log('gallery')
 });
 
 
