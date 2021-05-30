@@ -105,7 +105,7 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
   User.belongsToMany(Book, { as: 'waiting', through: Wait, unique: false })
 
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
   .then(() => {
     console.log(`Database & tables created!`)
   })
