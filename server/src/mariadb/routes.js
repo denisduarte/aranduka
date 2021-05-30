@@ -249,12 +249,15 @@ router.post("/books/add", async (req, res) => {
 //List all books
 router.get("/books", async (req, res) => {
 
+	console.log('aqui1');
+
 	let where;
 	let searchIDs;
 	let tagIDs;
 
 	//Has search parameter
 	console.log(req.query);
+	console.log('aqui2');
 	const search = req.query.search ? req.query.search : null;
 	if (search) {
 				searchIDs = await sequelize.query(
