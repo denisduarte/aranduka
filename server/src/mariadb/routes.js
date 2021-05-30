@@ -398,6 +398,7 @@ router.get("/books", async (req, res) => {
 			    			 "total": { "count": await Book.count({})}
 							 }
 
+	console.log(object);
 	res.status(200).send(object);
 });
 
